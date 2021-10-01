@@ -1,14 +1,14 @@
 package  net.software.backendcursojava.models.request;
 public class UserDetailRequestModel {
-    private String firsname;
+    private String firstname;
    private String lastname;
    private String imail;
    private String password;
 public String getFirsname() {
-    return firsname;
+    return firstname;
 }
 public void setFirsname(String firsname) {
-    this.firsname = firsname;
+    this.firstname = firsname;
 }
 public String getLastname() {
     return lastname;

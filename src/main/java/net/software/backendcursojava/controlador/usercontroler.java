@@ -1,21 +1,22 @@
 package net.software.backendcursojava.controlador;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import ch.qos.logback.core.joran.util.beans.BeanUtil;
 import net.software.backendcursojava.models.request.UserDetailRequestModel;
 import net.software.backendcursojava.models.responses.UserRest;
-//import net.software.backendcursojava.shared.dto.UserDTO;
+import net.software.backendcursojava.shared.dto.UserDTO;
 import net.software.backendcursojava.services.UserServiceInterface;
 
 @RestController
 @RequestMapping("/users")//http;//localhost:8080/users
-public class usercontroler {
+public class Usercontroler {
 
   @Autowired
 
@@ -34,15 +35,12 @@ public class usercontroler {
 
     UserDTO userDTO = new  UserDTO();
 
-    BeanUtil.copyPropertis(userDetails, userDTO);
+    BeanUtils.copyProperties( userDetails,userDTO);
 
-    UserDTO createdUser = userService.createdUser(userDTO);
+    UserDTO createdUser = userService.createUser(userDTO);
 
-    BeanUtil.copyPropertis(createdUser, userToReturn);
-
-
-
-
+    
+    BeanUtils.copyProperties( createdUser ,userToReturn);
 
   
     return userToReturn;
